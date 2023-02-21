@@ -1,10 +1,11 @@
-import { HeaderControl } from '../../index';
+import { HeaderControl } from '../HeaderControl/HeaderControl';
+import s from './HeaderController.module.scss';
 
 export const HeaderController = () => {
-    return (
-        <div className="header-controller">
-            <HeaderControl text="Sign in" />
-            <HeaderControl text="Register" />
-        </div>
-    );
+ return (
+  <div className={s.header_controller}>
+   <HeaderControl text="Sign in" />
+   <HeaderControl text="Register" />
+  </div>
+ );
 };

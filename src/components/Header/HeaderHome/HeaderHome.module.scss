@@ -1,0 +1,23 @@
+.header {
+ &_link {
+  width: 185px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column-gap: 24px;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+   .header_name {
+    color: #be123c;
+   }
+  }
+ }
+ &_name {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: #ffffff;
+  transition: 0.3s;
+ }
+}

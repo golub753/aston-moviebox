@@ -1,8 +1,10 @@
+import s from './HeaderHome.module.scss';
+
 export const HeaderHome = () => {
  return (
-  <a href="/" className="header-link">
+  <a href="/" className={s.header_link}>
    <img src="./src/assets/logo.svg" alt="Logo" className="header-logo" />
-   <span className="header-name">MovieBox</span>
+   <span className={s.header_name}>MovieBox</span>
   </a>
  );
 };
