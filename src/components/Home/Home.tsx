@@ -1,11 +1,10 @@
 import { Header } from '../index';
+import s from './Home.module.scss';
 
-const Home = () => {
-    return (
-        <div className="home">
-            <Header />
-        </div>
-    );
+export const Home = () => {
+ return (
+  <div className={s.home}>
+   <Header />
+  </div>
+ );
 };
-
-export default Home;

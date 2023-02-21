@@ -1,3 +1,5 @@
+import s from './Container.module.scss';
+
 export const Container = (props: any) => {
-    return <div className="container">{props.children}</div>;
+ return <div className={s.container}>{props.children}</div>;
 };
