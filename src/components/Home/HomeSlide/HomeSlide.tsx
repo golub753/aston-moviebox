@@ -5,7 +5,7 @@ import imdbImage from '../../../assets/imdb.svg';
 import potatosImage from '../../../assets/potatos.svg';
 import imgPlay from '../../../assets/play.svg';
 
-type HomeSlide = {
+export type HomeSlideType = {
  img: string;
  title: string;
  imdb: string;
@@ -14,7 +14,7 @@ type HomeSlide = {
  trailer: string;
 };
 
-export const HomeSlide = ({ img, title, imdb, text, potatos, trailer }: HomeSlide) => {
+export const HomeSlide = ({ img, title, imdb, text, potatos, trailer }: HomeSlideType) => {
  return (
   <div className={s.home_slide}>
    <div className={s.home_slide_wrapper}>

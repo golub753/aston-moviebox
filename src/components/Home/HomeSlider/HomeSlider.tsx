@@ -1,34 +1,27 @@
 import { HomeSlide } from '../HomeSlide/HomeSlide';
 import Slider from 'react-slick';
 import s from './HomeSlider.module.scss';
-
-type HomeSliderObject = {
- img: string;
- title: string;
- imdb: string;
- text: string;
- potatos: string;
- trailer: string;
-};
+import { HomeSlideType } from '../HomeSlide/HomeSlide';
 
 type HomeSlider = {
- slides: HomeSliderObject[];
+ slides: HomeSlideType[];
+};
+
+const settings = {
+ customPaging: function (i: number) {
+  return <span>{i + 1}</span>;
+ },
+ dots: true,
+ autoplay: true,
+ infinite: true,
+ speed: 500,
+ arrows: false,
+ slidesToShow: 1,
+ slidesToScroll: 1,
+ fade: true,
 };
 
 export const HomeSlider = ({ slides }: HomeSlider) => {
- const settings = {
-  customPaging: function (i) {
-   return <span>{i + 1}</span>;
-  },
-  dots: true,
-  autoplay: true,
-  infinite: true,
-  speed: 500,
-  arrows: false,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  fade: true,
- };
  return (
   <div className={s.home_slider}>
    <Slider {...settings}>
