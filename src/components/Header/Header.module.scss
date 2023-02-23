@@ -1,5 +1,10 @@
 .header {
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
  padding: 15px 0;
+ z-index: 12;
  &_wrapper {
   display: flex;
   align-items: center;

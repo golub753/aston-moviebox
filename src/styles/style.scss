@@ -2,3 +2,46 @@
 body {
  font-family: 'DM Sans', sans-serif;
 }
+
+.slick-dots {
+ position: absolute !important;
+ padding: 0 !important;
+ margin: 0 !important;
+ display: flex !important;
+ flex-direction: column;
+ right: 24px !important;
+ width: 36px !important;
+ top: 50%;
+ transform: translateY(-50%);
+ height: fit-content;
+ grid-row-gap: 10px;
+ li {
+  position: relative;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  color: #9ca3af;
+  transition: 0.3s;
+  &::after {
+   content: '';
+   position: absolute;
+   width: 20px;
+   height: 3px;
+   background: #ffffff;
+   border-radius: 6px;
+   left: -23px;
+   top: 6px;
+   transition: 0.3s;
+   opacity: 0;
+  }
+ }
+ li.slick-active {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 14px;
+  color: #ffffff;
+  &::after {
+   opacity: 1;
+  }
+ }
+}
