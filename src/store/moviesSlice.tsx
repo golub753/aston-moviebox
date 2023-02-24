@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const fetchMovies = createAsyncThunk('movies/fetchMovies', async () => {
- const response = await fetch('https://api-movies.github.io/collaps/datasets/page-52.json');
+ const response = await fetch('https://api-movies.github.io/collaps/datasets/page-6.json');
  const data = await response.json();
  return data;
 });

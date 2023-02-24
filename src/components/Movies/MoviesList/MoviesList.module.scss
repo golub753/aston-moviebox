@@ -1,0 +1,8 @@
+.movies {
+ &_carts {
+  display: grid;
+  grid-template-columns: repeat(4, 250px);
+  justify-content: space-between;
+  grid-row-gap: 30px;
+ }
+}

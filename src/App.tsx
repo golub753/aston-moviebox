@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchMovies } from './store/moviesSlice';
 import { useDispatch } from 'react-redux';
-import { Home } from './components/Home/Home';
+import { Home, Movies } from './components/index';
 
 const App = () => {
  const dispatch = useDispatch();
@@ -13,6 +13,7 @@ const App = () => {
  return (
   <div className="App">
    <Home />
+   <Movies />
   </div>
  );
 };
