@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Home } from './components/Home/Home';
+import { Home, Movies } from './components';
 
 const App = () => {
  return (
   <div className="App">
    <Home />
+   <Movies />
   </div>
  );
 };
