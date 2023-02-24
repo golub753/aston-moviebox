@@ -1,6 +1,6 @@
 import { Header } from '../index';
-import { HomeSlider } from './HomeSlider/HomeSlider';
-import s from './Home.module.scss';
+import { MainSlider } from './MainSlider/MainSlider';
+import s from './Main.module.scss';
 
 const slides = [
  {
@@ -32,11 +32,11 @@ const slides = [
  },
 ];
 
-export const Home = () => {
+export const Main = () => {
  return (
-  <div className={s.home}>
+  <div className={s.main}>
    <Header />
-   <HomeSlider slides={slides} />
+   <MainSlider slides={slides} />
   </div>
  );
 };

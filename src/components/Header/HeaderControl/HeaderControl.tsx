@@ -1,4 +1,5 @@
 import s from './HeaderControl.module.scss';
+import { Link } from 'react-router-dom';
 
 type HeaderControl = {
  text: string;
@@ -6,5 +7,9 @@ type HeaderControl = {
 };
 
 export const HeaderControl = ({ text, action }: HeaderControl) => {
- return <span className={s.header_control}>{text}</span>;
+ return (
+  <Link to={action} className={s.header_control}>
+   {text}
+  </Link>
+ );
 };
