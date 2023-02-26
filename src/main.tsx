@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import Normalize from 'react-normalize';
-import store from './store/store';
+import { store } from './store/store';
 import { Provider } from 'react-redux';
 import './styles/style.scss';
 import 'slick-carousel/slick/slick.css';

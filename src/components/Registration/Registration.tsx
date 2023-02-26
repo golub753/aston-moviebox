@@ -1,27 +1,27 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { useState } from 'react';
 import s from './Registration.module.scss';
-import { changeReg } from '../../store/popUpSlice';
+import { toggleRegistration } from '../../store/popUpSlice';
 
 import showImg from '../../assets/show.svg';
 import hide from '../../assets/hide.svg';
 
 export const Registration = () => {
  const [showPass, setShowPass] = useState(false);
- const reg = useSelector((state: any) => state.popUp.reg);
- const dispatch = useDispatch();
+ const showPopUp = useAppSelector((state) => state.popUp.registrationPopUp);
+ const dispatch = useAppDispatch();
 
  const rechangeShow = () => {
   setShowPass(!showPass);
  };
- const closeReg = () => {
-  dispatch(changeReg());
+ const toggleRegist = () => {
+  dispatch(toggleRegistration());
  };
 
  return (
   <>
-   <div className={s.overlay} data-style={reg} onClick={closeReg}></div>
-   <div className={s.registration} data-style={reg}>
+   <div className={showPopUp ? s.overlay_active : s.overlay} onClick={toggleRegist}></div>
+   <div className={showPopUp ? s.registration_active : s.registration}>
     <div className={s.registration_wrapper}>
      <form method="post">
       <div className={s.registration_title}>Registration</div>

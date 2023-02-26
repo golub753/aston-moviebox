@@ -1,10 +1,10 @@
 import { MainSlide } from '../MainSlide/MainSlide';
 import Slider from 'react-slick';
 import s from './MainSlider.module.scss';
-import { MainSlideType } from '../MainSlide/MainSlide';
+import { MainSlideProps } from '../MainSlide/MainSlide';
 
 type MainSlider = {
- slides: MainSlideType[];
+ slides: MainSlideProps[];
 };
 
 const settings = {

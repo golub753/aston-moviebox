@@ -1,20 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+export type MyState = {
+ authorizationPopUp: boolean;
+ registrationPopUp: boolean;
+};
+
+const initialState: MyState = {
+ authorizationPopUp: false,
+ registrationPopUp: false,
+};
+
 export const popUpSlice = createSlice({
  name: 'popUp',
- initialState: {
-  auth: false,
-  reg: false,
- },
+ initialState,
  reducers: {
-  changeAuth: (state) => {
-   state.auth = !state.auth;
+  toggleAuthorization: (state) => {
+   state.authorizationPopUp = !state.authorizationPopUp;
   },
-  changeReg: (state) => {
-   state.reg = !state.reg;
+  toggleRegistration: (state) => {
+   state.registrationPopUp = !state.registrationPopUp;
   },
  },
 });
 
+export const { toggleAuthorization, toggleRegistration } = popUpSlice.actions;
 export default popUpSlice.reducer;
-export const { changeAuth, changeReg } = popUpSlice.actions;

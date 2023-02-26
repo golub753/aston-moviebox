@@ -5,7 +5,7 @@ import imdbImage from '../../../assets/imdb.svg';
 import potatosImage from '../../../assets/potatos.svg';
 import imgPlay from '../../../assets/play.svg';
 
-export type MainSlideType = {
+export type MainSlideProps = {
  img: string;
  title: string;
  imdb: string;
@@ -14,7 +14,7 @@ export type MainSlideType = {
  trailer: string;
 };
 
-export const MainSlide = ({ img, title, imdb, text, potatos, trailer }: MainSlideType) => {
+export const MainSlide = ({ img, title, imdb, text, potatos, trailer }: MainSlideProps) => {
  return (
   <div className={s.main_slide}>
    <div className={s.main_slide_wrapper}>

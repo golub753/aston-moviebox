@@ -1,26 +1,26 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { useState } from 'react';
 import s from './Authorization.module.scss';
-import { changeAuth } from '../../store/popUpSlice';
+import { toggleAuthorization } from '../../store/popUpSlice';
 
 import showImg from '../../assets/show.svg';
 import hide from '../../assets/hide.svg';
 
 export const Authorization = () => {
  const [show, setShow] = useState(false);
- const auth = useSelector((state: any) => state.popUp.auth);
- const dispatch = useDispatch();
+ const showPopUp = useAppSelector((state) => state.popUp.authorizationPopUp);
+ const dispatch = useAppDispatch();
 
  const rechangeShowPass = () => {
   setShow(!show);
  };
- const closeAuth = () => {
-  dispatch(changeAuth());
+ const toggleAuth = () => {
+  dispatch(toggleAuthorization());
  };
  return (
   <>
-   <div className={s.overlay} data-style={auth} onClick={closeAuth}></div>
-   <div className={s.authorization} data-style={auth}>
+   <div className={showPopUp ? s.overlay_active : s.overlay} onClick={toggleAuth}></div>
+   <div className={showPopUp ? s.authorization_active : s.authorization}>
     <div className={s.authorization_wrapper}>
      <form method="post">
       <div className={s.authorization_title}>Authorization</div>

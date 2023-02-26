@@ -1,24 +1,20 @@
 import s from './HeaderControl.module.scss';
-import { useDispatch } from 'react-redux';
-import { changeAuth, changeReg } from '../../../store/popUpSlice';
+import { useAppDispatch } from '../../../hooks/hooks';
+import { toggleAuthorization, toggleRegistration } from '../../../store/popUpSlice';
 
 type HeaderControl = {
  text: string;
- action: string;
+ action: 'auth' | 'reg';
 };
 
 export const HeaderControl = ({ text, action }: HeaderControl) => {
- const dispatch = useDispatch();
- function changeStyle() {
-  if (action === 'auth') {
-   dispatch(changeAuth());
-  } else {
-   dispatch(changeReg());
-  }
- }
+ const dispatch = useAppDispatch();
+ const toggleAction = () => {
+  action === 'auth' ? dispatch(toggleAuthorization()) : dispatch(toggleRegistration());
+ };
  return (
-  <span onClick={changeStyle} className={s.header_control}>
+  <button onClick={toggleAction} className={s.header_control}>
    {text}
-  </span>
+  </button>
  );
 };
