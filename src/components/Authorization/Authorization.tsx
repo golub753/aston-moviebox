@@ -1,22 +1,28 @@
-import { Form, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import s from './Authorization.module.scss';
+import { changeAuth } from '../../store/popUpSlice';
 
 import showImg from '../../assets/show.svg';
 import hide from '../../assets/hide.svg';
 
 export const Authorization = () => {
  const [show, setShow] = useState(false);
+ const auth = useSelector((state: any) => state.popUp.auth);
+ const dispatch = useDispatch();
 
- const rechangeShow = () => {
+ const rechangeShowPass = () => {
   setShow(!show);
+ };
+ const closeAuth = () => {
+  dispatch(changeAuth());
  };
  return (
   <>
-   <Link to="/" className={s.overlay}></Link>
-   <div className={s.authorization}>
+   <div className={s.overlay} data-style={auth} onClick={closeAuth}></div>
+   <div className={s.authorization} data-style={auth}>
     <div className={s.authorization_wrapper}>
-     <Form method="post">
+     <form method="post">
       <div className={s.authorization_title}>Authorization</div>
       <div className={s.authorization_inputs}>
        <div className={s.authorization_block}>
@@ -30,7 +36,7 @@ export const Authorization = () => {
          Password
         </label>
         <input type={!show ? 'password' : 'text'} placeholder="Password" className={s.authorization_input} />
-        <div className={s.authorization_img} onClick={rechangeShow}>
+        <div className={s.authorization_img} onClick={rechangeShowPass}>
          {!show ? <img src={showImg} alt={showImg} /> : <img src={hide} alt={hide} />}
         </div>
        </div>
@@ -42,7 +48,7 @@ export const Authorization = () => {
        </label>
       </div>
       <button className={s.authorization_sign}>Sign In</button>
-     </Form>
+     </form>
     </div>
    </div>
   </>

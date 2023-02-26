@@ -1,23 +1,29 @@
-import { Form, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import s from './Registration.module.scss';
+import { changeReg } from '../../store/popUpSlice';
 
 import showImg from '../../assets/show.svg';
 import hide from '../../assets/hide.svg';
 
 export const Registration = () => {
  const [showPass, setShowPass] = useState(false);
+ const reg = useSelector((state: any) => state.popUp.reg);
+ const dispatch = useDispatch();
 
  const rechangeShow = () => {
   setShowPass(!showPass);
  };
+ const closeReg = () => {
+  dispatch(changeReg());
+ };
 
  return (
   <>
-   <Link to="/" className={s.overlay}></Link>
-   <div className={s.registration}>
+   <div className={s.overlay} data-style={reg} onClick={closeReg}></div>
+   <div className={s.registration} data-style={reg}>
     <div className={s.registration_wrapper}>
-     <Form method="post">
+     <form method="post">
       <div className={s.registration_title}>Registration</div>
       <div className={s.registration_inputs}>
        <div className={s.registration_block}>
@@ -55,7 +61,7 @@ export const Registration = () => {
        </label>
       </div>
       <button className={s.registration_sign}>Sign Up</button>
-     </Form>
+     </form>
     </div>
    </div>
   </>

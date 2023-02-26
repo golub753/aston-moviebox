@@ -1,12 +1,14 @@
-import { Main, Movies } from '../../components';
-import { Outlet } from 'react-router-dom';
+import { Main, Movies, Authorization, Registration } from '../../components';
 
 export const Home = () => {
  return (
   <>
    <Main />
    <Movies />
-   <Outlet />
+   <Authorization />
+   <Registration />
   </>
  );
 };
+
+export { Home as default };

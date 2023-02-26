@@ -1,29 +1,19 @@
-import { Home, ErrorPage, Authorization, Registration } from './pages';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-const router = createBrowserRouter([
- {
-  path: '/',
-  element: <Home />,
-  errorElement: <ErrorPage />,
-  children: [
-   {
-    path: 'auth',
-    element: <Authorization />,
-   },
-   {
-    path: 'register',
-    element: <Registration />,
-   },
-  ],
- },
-]);
+const Home = React.lazy(() => import('./pages/Home/Home'));
+const ErrorPage = React.lazy(() => import('./pages/ErrorPage/ErrorPage'));
 
 const App = () => {
  return (
-  <div className="App">
-   <RouterProvider router={router} />
-  </div>
+  <Router>
+   <Suspense fallback={<div>Loading...</div>}>
+    <Routes>
+     <Route path="*" element={<ErrorPage />} />
+     <Route path="/" element={<Home />} />
+    </Routes>
+   </Suspense>
+  </Router>
  );
 };
 

@@ -1,5 +1,6 @@
 import s from './HeaderControl.module.scss';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { changeAuth, changeReg } from '../../../store/popUpSlice';
 
 type HeaderControl = {
  text: string;
@@ -7,9 +8,17 @@ type HeaderControl = {
 };
 
 export const HeaderControl = ({ text, action }: HeaderControl) => {
+ const dispatch = useDispatch();
+ function changeStyle() {
+  if (action === 'auth') {
+   dispatch(changeAuth());
+  } else {
+   dispatch(changeReg());
+  }
+ }
  return (
-  <Link to={action} className={s.header_control}>
+  <span onClick={changeStyle} className={s.header_control}>
    {text}
-  </Link>
+  </span>
  );
 };
