@@ -1,4 +1,4 @@
-import { Home, ErrorPage, Authorization } from './pages';
+import { Home, ErrorPage, Authorization, Registration } from './pages';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -10,6 +10,10 @@ const router = createBrowserRouter([
    {
     path: 'auth',
     element: <Authorization />,
+   },
+   {
+    path: 'register',
+    element: <Registration />,
    },
   ],
  },

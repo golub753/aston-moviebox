@@ -5,4 +5,4 @@ export * from './Main/Main';
 export * from './Movies/Movies';
 
 //UI
-export * from '../UI/Input/Input';
+export * from '../UI/InputSearch/InputSearch';
