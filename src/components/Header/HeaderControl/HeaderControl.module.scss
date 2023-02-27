@@ -5,6 +5,10 @@
  color: #ffffff;
  cursor: pointer;
  transition: 0.3s;
+ text-decoration: none;
+ background: transparent;
+ outline: none;
+ border: none;
  &:hover {
   color: #be123c;
  }

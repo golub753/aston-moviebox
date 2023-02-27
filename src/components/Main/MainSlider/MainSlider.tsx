@@ -1,10 +1,10 @@
-import { HomeSlide } from '../HomeSlide/HomeSlide';
+import { MainSlide } from '../MainSlide/MainSlide';
 import Slider from 'react-slick';
-import s from './HomeSlider.module.scss';
-import { HomeSlideType } from '../HomeSlide/HomeSlide';
+import s from './MainSlider.module.scss';
+import { MainSlideProps } from '../MainSlide/MainSlide';
 
-type HomeSlider = {
- slides: HomeSlideType[];
+type MainSlider = {
+ slides: MainSlideProps[];
 };
 
 const settings = {
@@ -21,13 +21,13 @@ const settings = {
  fade: true,
 };
 
-export const HomeSlider = ({ slides }: HomeSlider) => {
+export const MainSlider = ({ slides }: MainSlider) => {
  return (
-  <div className={s.home_slider}>
+  <div className={s.main_slider}>
    <Slider {...settings}>
     {slides.map((slide, index) => {
      return (
-      <HomeSlide
+      <MainSlide
        key={index}
        img={slide.img}
        title={slide.title}
