@@ -6,19 +6,19 @@
 
 -   Функциональные компоненты с хуками в приоритете над классовыми
 -   Есть четкое разделение на умные и глупые компоненты
--   Есть рендеринг списков []()
--   Реализована хотя бы одна форма []()
--   Есть применение Context API []()
+-   Есть рендеринг списков [MoviesList](./src/components/Movies/MoviesList/MoviesList.tsx)
+-   Реализована хотя бы одна форма [Authorization](./src/components/Authorization/Authorization.tsx), [Registration](./src/components/Registration/Registration.tsx)
+-   Есть применение Context API [App](./src/App.tsx)
 -   Есть применение предохранителя []()
 -   Есть хотя бы один кастомный хук []()
 -   Хотя бы несколько компонентов используют PropTypes []()
 -   Поиск не должен триггерить много запросов к серверу
--   Есть применение lazy + Suspense []()
+-   Есть применение lazy + Suspense [App](./src/App.tsx)
 
 ### Redux
 
--   Используем Modern Redux with Redux Toolkit []()
--   Используем слайсы []()
+-   Используем Modern Redux with Redux Toolkit [store](./src/store/store.tsx)
+-   Используем слайсы [moviesSlice](./src/store/moviesSlice.tsx), [popUpSlice](./src/store/popUpSlice.tsx)
 -   Есть хотя бы одна кастомная мидлвара []()
 -   Используется RTK Query []()
 -   Используется Transforming Responses []()
