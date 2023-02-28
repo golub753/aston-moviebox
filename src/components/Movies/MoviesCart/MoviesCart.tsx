@@ -1,6 +1,7 @@
 import s from './MoviesCart.module.scss';
 import imdbImage from '../../../assets/imdb.svg';
 import heart from '../../../assets/heart.svg';
+import { Link } from 'react-router-dom';
 
 type MoviesCartType = {
  name: string;
@@ -9,12 +10,13 @@ type MoviesCartType = {
  year: number;
  country: object;
  imdb: string;
+ id: number;
  genre: Array<string>;
 };
 
-export const MoviesCart = ({ name, poster, category, year, country, imdb, genre }: MoviesCartType) => {
+export const MoviesCart = ({ name, poster, category, year, country, imdb, genre, id }: MoviesCartType) => {
  return (
-  <div className={s.movies_cart}>
+  <Link to={`/${id}`} className={s.movies_cart}>
    <div>
     <div className={s.movies_poster}>
      <img src={poster} alt={poster} className={s.movies_cart_img} />
@@ -46,6 +48,6 @@ export const MoviesCart = ({ name, poster, category, year, country, imdb, genre 
      </div>
     </div>
    </div>
-  </div>
+  </Link>
  );
 };
