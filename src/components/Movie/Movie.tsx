@@ -5,11 +5,11 @@ import { MovieMain } from './MovieMain/MovieMain';
 
 export const Movie = () => {
  const { id } = useParams();
- const notification = useAppSelector((state) => state.movies.movies.find((element) => element.id === +id));
+ const movie = useAppSelector((state) => state.movies.movies.find((element) => element.id === +id));
  return (
   <div>
    <Header />
-   <MovieMain img={notification.poster} title={notification.origin_name} imdb={notification.imdb} />
+   <MovieMain img={movie.poster} title={movie.origin_name} imdb={movie.imdb} />
   </div>
  );
 };
