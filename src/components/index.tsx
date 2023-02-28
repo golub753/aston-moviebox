@@ -5,6 +5,7 @@ export * from './Main/Main';
 export * from './Movies/Movies';
 export * from './Authorization/Authorization';
 export * from './Registration/Registration';
+export * from './Preloader/Preloader';
 
 //UI
 export * from '../UI/InputSearch/InputSearch';

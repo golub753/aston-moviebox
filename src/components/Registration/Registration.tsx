@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch } from '../../hooks/hooks';
 import { useState } from 'react';
 import s from './Registration.module.scss';
 import { toggleRegistration } from '../../store/popUpSlice';
@@ -8,7 +8,6 @@ import hide from '../../assets/hide.svg';
 
 export const Registration = () => {
  const [showPass, setShowPass] = useState(false);
- const showPopUp = useAppSelector((state) => state.popUp.registrationPopUp);
  const dispatch = useAppDispatch();
 
  const rechangeShow = () => {
@@ -20,8 +19,8 @@ export const Registration = () => {
 
  return (
   <>
-   <div className={showPopUp ? s.overlay_active : s.overlay} onClick={toggleRegist}></div>
-   <div className={showPopUp ? s.registration_active : s.registration}>
+   <div className={s.overlay} onClick={toggleRegist}></div>
+   <div className={s.registration}>
     <div className={s.registration_wrapper}>
      <form method="post">
       <div className={s.registration_title}>Registration</div>

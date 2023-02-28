@@ -1,12 +1,10 @@
-import { Main, Movies, Authorization, Registration } from '../../components';
+import { Main, Movies } from '../../components';
 
 export const Home = () => {
  return (
   <>
    <Main />
    <Movies />
-   <Authorization />
-   <Registration />
   </>
  );
 };

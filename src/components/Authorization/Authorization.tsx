@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch } from '../../hooks/hooks';
 import { useState } from 'react';
 import s from './Authorization.module.scss';
 import { toggleAuthorization } from '../../store/popUpSlice';
@@ -8,7 +8,6 @@ import hide from '../../assets/hide.svg';
 
 export const Authorization = () => {
  const [show, setShow] = useState(false);
- const showPopUp = useAppSelector((state) => state.popUp.authorizationPopUp);
  const dispatch = useAppDispatch();
 
  const rechangeShowPass = () => {
@@ -19,8 +18,8 @@ export const Authorization = () => {
  };
  return (
   <>
-   <div className={showPopUp ? s.overlay_active : s.overlay} onClick={toggleAuth}></div>
-   <div className={showPopUp ? s.authorization_active : s.authorization}>
+   <div className={s.overlay} onClick={toggleAuth}></div>
+   <div className={s.authorization}>
     <div className={s.authorization_wrapper}>
      <form method="post">
       <div className={s.authorization_title}>Authorization</div>

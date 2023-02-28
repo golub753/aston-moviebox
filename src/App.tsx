@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Preloader } from './components/index';
 
 const Home = React.lazy(() => import('./pages/Home/Home'));
 const ErrorPage = React.lazy(() => import('./pages/ErrorPage/ErrorPage'));
@@ -7,7 +8,7 @@ const ErrorPage = React.lazy(() => import('./pages/ErrorPage/ErrorPage'));
 const App = () => {
  return (
   <Router>
-   <Suspense fallback={<div>Loading...</div>}>
+   <Suspense fallback={<Preloader />}>
     <Routes>
      <Route path="*" element={<ErrorPage />} />
      <Route path="/" element={<Home />} />
