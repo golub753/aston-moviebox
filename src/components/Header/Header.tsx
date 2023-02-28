@@ -7,8 +7,7 @@ import s from './Header.module.scss';
 import { useAppSelector } from '../../hooks/hooks';
 
 export const Header = () => {
- const showPopUpAuthorization = useAppSelector((state) => state.popUp.authorizationPopUp);
- const showPopUpRegistration = useAppSelector((state) => state.popUp.registrationPopUp);
+ const { authorizationPopUp, registrationPopUp } = useAppSelector((state) => state.popUp);
  return (
   <div className={s.header}>
    <Container>
@@ -18,8 +17,8 @@ export const Header = () => {
      <HeaderController />
     </div>
    </Container>
-   {showPopUpAuthorization ? <Authorization /> : null}
-   {showPopUpRegistration ? <Registration /> : null}
+   {authorizationPopUp && <Authorization />}
+   {registrationPopUp && <Registration />}
   </div>
  );
 };
