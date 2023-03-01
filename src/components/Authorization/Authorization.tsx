@@ -46,7 +46,7 @@ export const Authorization = () => {
    <div className={s.overlay} onClick={toggleAuth}></div>
    <div className={s.authorization}>
     <div className={s.authorization_wrapper}>
-     <form method="get" onSubmit={(e) => submitForm(e)}>
+     <form onSubmit={submitForm}>
       <div className={s.authorization_title}>Authorization</div>
       <div className={s.authorization_inputs}>
        <div className={s.authorization_block}>
@@ -57,7 +57,7 @@ export const Authorization = () => {
          type="email"
          required
          value={valueMail}
-         onChange={(e) => changeInputMail(e)}
+         onChange={changeInputMail}
          placeholder="E-mail"
          id="email_auth"
          className={s.authorization_input}
@@ -72,7 +72,7 @@ export const Authorization = () => {
          type={!show ? 'password' : 'text'}
          required
          placeholder="Password"
-         onChange={(e) => changeInputPassword(e)}
+         onChange={changeInputPassword}
          id="req_auth"
          className={s.authorization_input}
         />

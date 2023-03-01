@@ -19,7 +19,7 @@ const themes = {
 export const ThemeContext = React.createContext(themes);
 
 const App = () => {
- const user = useUser();
+ useUser();
  return (
   <Router>
    <Suspense fallback={<Preloader />}>

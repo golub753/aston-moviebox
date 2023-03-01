@@ -20,7 +20,7 @@ export const userSlice = createSlice({
  name: 'user',
  initialState,
  reducers: {
-  takeUserFromLocal(state, action) {
+  setUserFromLocal(state, action) {
    state.user = action.payload;
   },
  },
@@ -40,4 +40,4 @@ export const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { takeUserFromLocal } = userSlice.actions;
+export const { setUserFromLocal } = userSlice.actions;

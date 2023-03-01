@@ -7,7 +7,7 @@ export const HeaderController = () => {
  return (
   <div className={s.header_controller}>
    {user ? (
-    <button className={s.header_name}>{user}</button>
+    <span className={s.header_name}>{user}</span>
    ) : (
     <>
      <HeaderControl text="Sign in" action="auth" />
