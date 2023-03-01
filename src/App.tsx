@@ -2,6 +2,7 @@ import React, { Suspense, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Preloader } from './components/index';
 import { Movie } from './components/Movie/Movie';
+import { useUser } from './hooks/hooks';
 
 const Home = React.lazy(() => import('./pages/Home/Home'));
 const ErrorPage = React.lazy(() => import('./pages/ErrorPage/ErrorPage'));
@@ -18,6 +19,7 @@ const themes = {
 export const ThemeContext = React.createContext(themes);
 
 const App = () => {
+ useUser();
  return (
   <Router>
    <Suspense fallback={<Preloader />}>
