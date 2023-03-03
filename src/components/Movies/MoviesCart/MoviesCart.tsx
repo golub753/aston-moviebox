@@ -2,6 +2,7 @@ import s from './MoviesCart.module.scss';
 import imdbImage from '../../../assets/imdb.svg';
 import heart from '../../../assets/heart.svg';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../../hooks/hooks';
 
 type MoviesCartType = {
  name: string;
@@ -15,15 +16,18 @@ type MoviesCartType = {
 };
 
 export const MoviesCart = ({ name, poster, category, year, country, imdb, genre, id }: MoviesCartType) => {
+ const user = useAppSelector((state) => state.user.user.name);
  return (
   <Link to={`/${id}`} className={s.movies_cart}>
    <div>
     <div className={s.movies_poster}>
      <img src={poster} alt={poster} className={s.movies_cart_img} />
      <span className={s.movies_cart_category}>{category}</span>
-     <button className={s.movies_cart_wish}>
-      <img src={heart} alt={heart} />
-     </button>
+     {user && (
+      <button className={s.movies_cart_wish}>
+       <img src={heart} alt={heart} />
+      </button>
+     )}
     </div>
     <div>
      <div className={s.movies_cart_info}>

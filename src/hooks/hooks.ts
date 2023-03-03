@@ -4,5 +4,5 @@ import type { RootState, AppDispatch } from '../store/store';
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-export * from './useAuthorization';
+export * from '../helpers/setUserInLocalStorage';
 export * from './useUser';
