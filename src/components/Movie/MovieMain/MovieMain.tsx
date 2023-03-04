@@ -1,6 +1,6 @@
 import { Container } from '../../index';
 import s from './MovieMain.module.scss';
-import { MainSlideProps } from 'components/Main/MainSlide/MainSlide';
+import { MovieButtonWishList } from '../MovieButtonWishList/MovieButtonWishList';
 
 import imdbImage from '../../../assets/imdb.svg';
 
@@ -26,8 +26,7 @@ export const MovieMain = ({ img, title, imdb }: MovieMainProps) => {
         </div>
        </div>
       )}
-
-      <button className={s.movie_button}>Add to WishList</button>
+      <MovieButtonWishList>Add to WishList</MovieButtonWishList>
      </div>
     </Container>
    </div>

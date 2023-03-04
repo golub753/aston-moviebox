@@ -1,13 +1,25 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { useAuthorization } from '../hooks/hooks';
+import { getUserInLocalStorage } from '../helpers/getUserInLocalStorage';
 
 export const getUser = createAsyncThunk(
  'user/getUser',
- async ({ valueMail, valuePassword, remember }: { valueMail: string; valuePassword: string; remember: boolean }) => {
+ async ({ mail, password, remember }: { mail: string; password: string; remember: boolean }) => {
   const response = await fetch('https://aston-moviebox-default-rtdb.firebaseio.com/users.json');
   const data = await response.json();
-  const authorization = useAuthorization(valueMail, valuePassword, remember, data);
+  const authorization = getUserInLocalStorage(mail, password, remember, data);
   return authorization;
+ }
+);
+
+export const pushUser = createAsyncThunk(
+ 'user/registerUser',
+ async ({ name, mail, password, remember }: { name: string; mail: string; password: string; remember: boolean }) => {
+  const response = await fetch('https://aston-moviebox-default-rtdb.firebaseio.com/users.json', {
+   method: 'post',
+   body: JSON.stringify({ name: name, mail: mail, password: password }),
+  });
+  const data = await response.json();
+  return data;
  }
 );
 
@@ -21,6 +33,9 @@ export const userSlice = createSlice({
  initialState,
  reducers: {
   setUserFromLocal(state, action) {
+   state.user = action.payload;
+  },
+  authorizationWithourRemember(state, action) {
    state.user = action.payload;
   },
  },
@@ -40,4 +55,4 @@ export const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { setUserFromLocal } = userSlice.actions;
+export const { setUserFromLocal, authorizationWithourRemember } = userSlice.actions;
