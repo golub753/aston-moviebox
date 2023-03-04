@@ -54,15 +54,15 @@ export const Registration = () => {
 
  function isValidationInputs(userValid: boolean, mailValid: boolean, passValid: boolean, passConfirmValid: boolean) {
   if (userValid && mailValid && passValid && passConfirmValid) {
-   setDisabledSubmit(false);
+   return true;
   } else {
-   setDisabledSubmit(true);
+   return false;
   }
  }
 
- useEffect(() => {
-  isValidationInputs(userValid, mailValid, passValid, passConfirmValid);
- }, [userValid, mailValid, passValid, passConfirmValid]);
+ //  useEffect(() => {
+ //   isValidationInputs(userValid, mailValid, passValid, passConfirmValid);
+ //  }, [userValid, mailValid, passValid, passConfirmValid]);
 
  const submitForm = (e) => {
   e.preventDefault();
@@ -89,6 +89,8 @@ export const Registration = () => {
     return { ...prev, userValid: false };
    });
   }
+  const isValid = isValidationInputs(userValid, mailValid, passValid, passConfirmValid);
+  !isValid ? setDisabledSubmit(true) : setDisabledSubmit(false);
  };
 
  const changeInputMail = (e) => {
@@ -104,6 +106,8 @@ export const Registration = () => {
     return { ...prev, mailValid: false };
    });
   }
+  const isValid = isValidationInputs(userValid, mailValid, passValid, passConfirmValid);
+  !isValid ? setDisabledSubmit(true) : setDisabledSubmit(false);
  };
 
  const checkUserInDataBase = async (e) => {
@@ -138,6 +142,8 @@ export const Registration = () => {
     return { ...prev, passValid: false };
    });
   }
+  const isValid = isValidationInputs(userValid, mailValid, passValid, passConfirmValid);
+  !isValid ? setDisabledSubmit(true) : setDisabledSubmit(false);
  };
 
  const changeInputConfirmPassword = (e) => {
@@ -155,6 +161,8 @@ export const Registration = () => {
     return { ...prev, passConfirmValid: true };
    });
   }
+  const isValid = isValidationInputs(userValid, mailValid, passValid, passConfirmValid);
+  !isValid ? setDisabledSubmit(true) : setDisabledSubmit(false);
  };
 
  const changeRemember = () => {
