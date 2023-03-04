@@ -1,9 +1,8 @@
 import { Container } from '../../index';
 import s from './MovieMain.module.scss';
-import { MainSlideProps } from 'components/Main/MainSlide/MainSlide';
+import { MovieButtonWishList } from '../MovieButtonWishList/MovieButtonWishList';
 
 import imdbImage from '../../../assets/imdb.svg';
-import { useAppSelector } from '../../../hooks/hooks';
 
 type MovieMainProps = {
  img: string;
@@ -12,7 +11,6 @@ type MovieMainProps = {
 };
 
 export const MovieMain = ({ img, title, imdb }: MovieMainProps) => {
- const user = useAppSelector((state) => state.user.user.name);
  return (
   <div className={s.movie}>
    <img src={img} alt={img} className={s.movie_main} />
@@ -28,7 +26,7 @@ export const MovieMain = ({ img, title, imdb }: MovieMainProps) => {
         </div>
        </div>
       )}
-      {user && <button className={s.movie_button}>Add to WishList</button>}
+      <MovieButtonWishList>Add to WishList</MovieButtonWishList>
      </div>
     </Container>
    </div>

@@ -1,32 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { setUserInLocalStorage } from '../helpers/setUserInLocalStorage';
+import { getUserInLocalStorage } from '../helpers/getUserInLocalStorage';
 
 export const getUser = createAsyncThunk(
  'user/getUser',
- async ({ valueMail, valuePassword, remember }: { valueMail: string; valuePassword: string; remember: boolean }) => {
+ async ({ mail, password, remember }: { mail: string; password: string; remember: boolean }) => {
   const response = await fetch('https://aston-moviebox-default-rtdb.firebaseio.com/users.json');
   const data = await response.json();
-  const authorization = setUserInLocalStorage(valueMail, valuePassword, remember, data);
+  const authorization = getUserInLocalStorage(mail, password, remember, data);
   return authorization;
  }
 );
 
 export const pushUser = createAsyncThunk(
  'user/registerUser',
- async ({
-  valueName,
-  valueMail,
-  valuePassword,
-  remember,
- }: {
-  valueName: string;
-  valueMail: string;
-  valuePassword: string;
-  remember: boolean;
- }) => {
+ async ({ name, mail, password, remember }: { name: string; mail: string; password: string; remember: boolean }) => {
   const response = await fetch('https://aston-moviebox-default-rtdb.firebaseio.com/users.json', {
    method: 'post',
-   body: JSON.stringify({ name: valueName, mail: valueMail, password: valuePassword }),
+   body: JSON.stringify({ name: name, mail: mail, password: password }),
   });
   const data = await response.json();
   return data;

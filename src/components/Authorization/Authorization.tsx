@@ -7,16 +7,28 @@ import { getUser } from '../../store/userSlice';
 import showImg from '../../assets/show.svg';
 import hide from '../../assets/hide.svg';
 
+interface FormState {
+ mail: string;
+ password: string;
+ remember: boolean;
+}
+
 export const Authorization = () => {
+ const [formState, setFormState] = useState<FormState>({
+  mail: '',
+  password: '',
+  remember: false,
+ });
+
+ const { mail, password, remember } = formState;
+
  const [show, setShow] = useState(false);
- const [valueMail, setValueMail] = useState('');
- const [valuePassword, setValuePassword] = useState('');
- const [remember, setRemember] = useState(false);
+
  const dispatch = useAppDispatch();
 
  const submitForm = (e) => {
   e.preventDefault();
-  dispatch(getUser({ valueMail, valuePassword, remember }));
+  dispatch(getUser({ mail, password, remember }));
   toggleAuth();
   e.target.reset();
  };
@@ -30,15 +42,21 @@ export const Authorization = () => {
  };
 
  const changeInputMail = (e) => {
-  setValueMail(e.target.value);
+  setFormState((prev) => {
+   return { ...prev, mail: e.target.value };
+  });
  };
 
  const changeInputPassword = (e) => {
-  setValuePassword(e.target.value);
+  setFormState((prev) => {
+   return { ...prev, password: e.target.value };
+  });
  };
 
  const changeRemember = () => {
-  setRemember(!remember);
+  setFormState((prev) => {
+   return { ...prev, remember: !remember };
+  });
  };
 
  return (
@@ -56,7 +74,7 @@ export const Authorization = () => {
         <input
          type="email"
          required
-         value={valueMail}
+         value={mail}
          onChange={changeInputMail}
          placeholder="E-mail"
          id="email_auth"
@@ -68,7 +86,7 @@ export const Authorization = () => {
          Password
         </label>
         <input
-         value={valuePassword}
+         value={password}
          type={!show ? 'password' : 'text'}
          required
          placeholder="Password"

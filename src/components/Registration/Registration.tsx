@@ -1,24 +1,48 @@
 import { useAppDispatch } from '../../hooks/hooks';
 import { useEffect, useState } from 'react';
-import s from './Registration.module.scss';
 import { toggleRegistration } from '../../store/popUpSlice';
 import { pushUser } from '../../store/userSlice';
 import { getUser } from '../../store/userSlice';
 import { authorizationWithourRemember } from '../../store/userSlice';
 
+import s from './Registration.module.scss';
+
 import showImg from '../../assets/show.svg';
 import hide from '../../assets/hide.svg';
 
-export const Registration = () => {
- const [userValid, setUserValid] = useState(false);
- const [mailValid, setMailValid] = useState(false);
- const [passValid, setPassValid] = useState(false);
- const [passConfirmValid, setPassConfirmValid] = useState(false);
+interface FormState {
+ name: string;
+ mail: string;
+ password: string;
+ passwordConfirm: string;
+ remember: boolean;
+}
 
- const [valueName, setValueName] = useState('');
- const [valueMail, setValueMail] = useState('');
- const [valuePassword, setValuePassword] = useState('');
- const [valueConfirmPassword, setValueConfirmPassword] = useState('');
+interface IsFormNotEmpty {
+ userValid: boolean;
+ mailValid: boolean;
+ passValid: boolean;
+ passConfirmValid: boolean;
+}
+
+export const Registration = () => {
+ const [formState, setFormState] = useState<FormState>({
+  name: '',
+  mail: '',
+  password: '',
+  passwordConfirm: '',
+  remember: false,
+ });
+
+ const [isFormNotEmpty, setIsFormNotEmpty] = useState<IsFormNotEmpty>({
+  userValid: false,
+  mailValid: false,
+  passValid: false,
+  passConfirmValid: false,
+ });
+
+ const { name, mail, password, passwordConfirm, remember } = formState;
+ const { userValid, mailValid, passValid, passConfirmValid } = isFormNotEmpty;
 
  const [confirm, setConfirm] = useState(false);
  const [showPass, setShowPass] = useState(false);
@@ -26,45 +50,59 @@ export const Registration = () => {
  const [disabledSubmit, setDisabledSubmit] = useState(true);
  const [userIsExists, setUserIsExists] = useState(false);
 
- const [remember, setRemember] = useState(false);
-
  const dispatch = useAppDispatch();
 
- useEffect(() => {
+ function isValidationInputs(userValid: boolean, mailValid: boolean, passValid: boolean, passConfirmValid: boolean) {
   if (userValid && mailValid && passValid && passConfirmValid) {
    setDisabledSubmit(false);
   } else {
    setDisabledSubmit(true);
   }
+ }
+
+ useEffect(() => {
+  isValidationInputs(userValid, mailValid, passValid, passConfirmValid);
  }, [userValid, mailValid, passValid, passConfirmValid]);
 
  const submitForm = (e) => {
   e.preventDefault();
-  dispatch(pushUser({ valueName, valueMail, valuePassword, remember }));
-  if (remember) {
-   dispatch(getUser({ valueMail, valuePassword, remember }));
+  dispatch(pushUser({ name, mail, password, remember }));
+  if (formState.remember) {
+   dispatch(getUser({ mail, password, remember }));
   } else {
-   dispatch(authorizationWithourRemember({ name: valueName, mail: valueMail, password: valuePassword }));
+   dispatch(authorizationWithourRemember({ name: name, mail: mail, password: password }));
   }
   toggleRegist();
   e.target.reset();
  };
 
  const changeInputName = (e) => {
-  setValueName(e.target.value);
+  setFormState((prev) => {
+   return { ...prev, name: e.target.value };
+  });
   if (e.target.value.length > 1) {
-   setUserValid(true);
+   setIsFormNotEmpty((prev) => {
+    return { ...prev, userValid: true };
+   });
   } else {
-   setUserValid(false);
+   setIsFormNotEmpty((prev) => {
+    return { ...prev, userValid: false };
+   });
   }
  };
 
  const changeInputMail = (e) => {
-  setValueMail(e.target.value);
+  setFormState((prev) => {
+   return { ...prev, mail: e.target.value };
+  });
   if (e.target.value) {
-   setMailValid(true);
+   setIsFormNotEmpty((prev) => {
+    return { ...prev, mailValid: true };
+   });
   } else {
-   setMailValid(false);
+   setIsFormNotEmpty((prev) => {
+    return { ...prev, mailValid: false };
+   });
   }
  };
 
@@ -74,38 +112,55 @@ export const Registration = () => {
   for (let key in data) {
    if (data[key].mail === e.target.value) {
     setUserIsExists(true);
-    setMailValid(false);
+    setIsFormNotEmpty((prev) => {
+     return { ...prev, mailValid: false };
+    });
     break;
    } else {
     setUserIsExists(false);
-    setMailValid(true);
+    setIsFormNotEmpty((prev) => {
+     return { ...prev, mailValid: true };
+    });
    }
   }
  };
 
  const changeInputPassword = (e) => {
-  setValuePassword(e.target.value);
+  setFormState((prev) => {
+   return { ...prev, password: e.target.value };
+  });
   if (e.target.value) {
-   setPassValid(true);
+   setIsFormNotEmpty((prev) => {
+    return { ...prev, passValid: true };
+   });
   } else {
-   setPassValid(false);
+   setIsFormNotEmpty((prev) => {
+    return { ...prev, passValid: false };
+   });
   }
  };
 
  const changeInputConfirmPassword = (e) => {
-  setValueConfirmPassword(e.target.value);
-  if (e.target.value !== valuePassword) {
+  setFormState((prev) => {
+   return { ...prev, passwordConfirm: e.target.value };
+  });
+  if (e.target.value !== password) {
    setConfirm(true);
-   setDisabledSubmit(true);
-   setPassConfirmValid(false);
+   setIsFormNotEmpty((prev) => {
+    return { ...prev, passConfirmValid: false };
+   });
   } else {
    setConfirm(false);
-   setPassConfirmValid(true);
+   setIsFormNotEmpty((prev) => {
+    return { ...prev, passConfirmValid: true };
+   });
   }
  };
 
  const changeRemember = () => {
-  setRemember(!remember);
+  setFormState((prev) => {
+   return { ...prev, remember: !remember };
+  });
  };
 
  const rechangeShow = () => {
@@ -131,7 +186,7 @@ export const Registration = () => {
         <input
          type="text"
          id="name_reg"
-         value={valueName}
+         value={name}
          placeholder="Name"
          required
          onChange={changeInputName}
@@ -149,7 +204,7 @@ export const Registration = () => {
          placeholder="E-mail"
          required
          onChange={changeInputMail}
-         value={valueMail}
+         value={mail}
          onBlur={checkUserInDataBase}
          className={`${userIsExists ? s.registration_input_error : s.registration_input}`}
         />
@@ -164,6 +219,7 @@ export const Registration = () => {
          type={!showPass ? 'password' : 'text'}
          placeholder="Password"
          required
+         value={password}
          onChange={changeInputPassword}
          className={s.registration_input}
         />
@@ -179,7 +235,7 @@ export const Registration = () => {
          id="confirm_reg"
          type={!showPass ? 'password' : 'text'}
          placeholder="Password"
-         value={valueConfirmPassword}
+         value={passwordConfirm}
          required
          onChange={changeInputConfirmPassword}
          className={`${confirm ? s.registration_input_error : s.registration_input}`}
