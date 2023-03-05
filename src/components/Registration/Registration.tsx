@@ -11,6 +11,9 @@ import showImg from '../../assets/show.svg';
 import hide from '../../assets/hide.svg';
 import close from '../../assets/close.svg';
 
+const REG_MAIL =
+ /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 interface FormState {
  name: FormStatePros;
  mail: FormStatePros;
@@ -54,9 +57,6 @@ export const Registration = () => {
 
  const { name, mail, password, passwordConfirm, remember, errorForm } = formState;
  const [showPass, setShowPass] = useState(false);
-
- const REG_MAIL =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
  const dispatch = useAppDispatch();
 
