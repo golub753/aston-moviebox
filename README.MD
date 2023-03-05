@@ -13,7 +13,7 @@
 - Есть применение Context API [App](./src/App.tsx), [Movies](./src/components/Movies/Movies.tsx)
 - Есть применение предохранителя [ErrorBoundary](./src/hoc/ErrorBoundary/ErrorBoundary.tsx)
 - Есть хотя бы один кастомный хук [useUser](./src/hooks/useUser.tsx)
-- Хотя бы несколько компонентов используют PropTypes []()
+- Хотя бы несколько компонентов используют PropTypes [MoviesCart](./src/components/Movies/MoviesCart/MoviesCart.tsx), [HeaderControl](./src/components/Header/HeaderControl/HeaderControl.tsx)
 - Поиск не должен триггерить много запросов к серверу
 - Есть применение lazy + Suspense [App](./src/App.tsx)
 

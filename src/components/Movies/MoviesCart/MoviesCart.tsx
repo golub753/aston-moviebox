@@ -3,6 +3,7 @@ import imdbImage from '../../../assets/imdb.svg';
 import heart from '../../../assets/heart.svg';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../hooks/hooks';
+import PropTypes from 'prop-types';
 
 type MoviesCartType = {
  name: string;
@@ -54,4 +55,15 @@ export const MoviesCart = ({ name, poster, category, year, country, imdb, genre,
    </div>
   </Link>
  );
+};
+
+MoviesCart.propTypes = {
+ name: PropTypes.string,
+ poster: PropTypes.string,
+ category: PropTypes.string,
+ year: PropTypes.number,
+ country: PropTypes.object,
+ imdb: PropTypes.string,
+ id: PropTypes.number,
+ genre: PropTypes.object,
 };

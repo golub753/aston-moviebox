@@ -1,6 +1,7 @@
 import s from './HeaderControl.module.scss';
 import { useAppDispatch } from '../../../hooks/hooks';
 import { toggleAuthorization, toggleRegistration } from '../../../store/popUpSlice';
+import PropTypes from 'prop-types';
 
 type HeaderControl = {
  text: string;
@@ -17,4 +18,9 @@ export const HeaderControl = ({ text, action }: HeaderControl) => {
    {text}
   </button>
  );
+};
+
+HeaderControl.propTypes = {
+ text: PropTypes.string,
+ action: PropTypes.oneOf(['auth', 'reg']),
 };
