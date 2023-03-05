@@ -6,6 +6,7 @@ import { getUser } from '../../store/userSlice';
 
 import showImg from '../../assets/show.svg';
 import hide from '../../assets/hide.svg';
+import close from '../../assets/close.svg';
 
 interface FormState {
  mail: string;
@@ -61,9 +62,10 @@ export const Authorization = () => {
 
  return (
   <>
-   <div className={s.overlay} onClick={toggleAuth}></div>
+   <div className={s.overlay}></div>
    <div className={s.authorization}>
     <div className={s.authorization_wrapper}>
+     <img src={close} alt={close} className={s.authorization_close} onClick={toggleAuth} />
      <form onSubmit={submitForm}>
       <div className={s.authorization_title}>Authorization</div>
       <div className={s.authorization_inputs}>
