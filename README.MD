@@ -11,7 +11,7 @@
 - Есть рендеринг списков [MoviesList](./src/components/Movies/MoviesList/MoviesList.tsx), [MainSlider](./src/components/Main/MainSlider/MainSlider.tsx)
 - Реализована хотя бы одна форма [Authorization](./src/components/Authorization/Authorization.tsx), [Registration](./src/components/Registration/Registration.tsx)
 - Есть применение Context API [App](./src/App.tsx), [Movies](./src/components/Movies/Movies.tsx)
-- Есть применение предохранителя []()
+- Есть применение предохранителя [ErrorBoundary](./src/hoc/ErrorBoundary/ErrorBoundary.tsx)
 - Есть хотя бы один кастомный хук [useUser](./src/hooks/useUser.tsx)
 - Хотя бы несколько компонентов используют PropTypes []()
 - Поиск не должен триггерить много запросов к серверу
