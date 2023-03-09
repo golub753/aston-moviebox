@@ -8,9 +8,10 @@ type MovieMainProps = {
  img: string;
  title: string;
  imdb: string;
+ id: string | undefined;
 };
 
-export const MovieMain = ({ img, title, imdb }: MovieMainProps) => {
+export const MovieMain = ({ img, title, imdb, id }: MovieMainProps) => {
  return (
   <div className={s.movie}>
    <img src={img} alt={img} className={s.movie_main} />
@@ -26,7 +27,7 @@ export const MovieMain = ({ img, title, imdb }: MovieMainProps) => {
         </div>
        </div>
       )}
-      <MovieButtonWishList>Add to WishList</MovieButtonWishList>
+      <MovieButtonWishList id={id}>Add to WishList</MovieButtonWishList>
      </div>
     </Container>
    </div>

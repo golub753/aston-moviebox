@@ -9,7 +9,7 @@ export const Movie = () => {
  return (
   <div>
    <Header />
-   <MovieMain img={movie.poster} title={movie.origin_name} imdb={movie.imdb} />
+   <MovieMain id={id} img={movie.poster} title={movie.origin_name} imdb={movie.imdb} />
   </div>
  );
 };

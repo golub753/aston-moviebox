@@ -6,6 +6,8 @@ import { useUser } from './hooks/hooks';
 
 const Home = React.lazy(() => import('./pages/Home/Home'));
 const ErrorPage = React.lazy(() => import('./pages/ErrorPage/ErrorPage'));
+const WishList = React.lazy(() => import('./pages/Wishlist/Wishlist'));
+const Result = React.lazy(() => import('./pages/Result/Result'));
 
 const themes = {
  light: {
@@ -34,6 +36,8 @@ const App = () => {
       }
      />
      <Route path="/:id" element={<Movie />} />
+     <Route path="/wishlist" element={<WishList />} />
+     <Route path="/result" element={<Result />} />
     </Routes>
    </Suspense>
   </Router>

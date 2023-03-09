@@ -1,22 +1,10 @@
-import s from './MoviesCart.module.scss';
+import { MoviesCartType } from '../../../components/Movies/MoviesCart/MoviesCart';
 import imdbImage from '../../../assets/imdb.svg';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import s from './WishlistMovie.module.scss';
 
-export type MoviesCartType = {
- name: string;
- poster: string;
- category: string;
- year: number;
- country: object;
- imdb: string;
- id: number;
- genre: Array<string>;
-};
-
-export const MoviesCart = ({ name, poster, category, year, country, imdb, genre, id }: MoviesCartType) => {
+export const WishlistMovie = ({ name, poster, category, year, country, imdb, genre, id }: MoviesCartType) => {
  return (
-  <Link to={`/${id}`} className={s.movies_cart}>
+  <div className={s.movies_cart}>
    <div>
     <div className={s.movies_poster}>
      <img src={poster} alt={poster} className={s.movies_cart_img} />
@@ -45,17 +33,6 @@ export const MoviesCart = ({ name, poster, category, year, country, imdb, genre,
      </div>
     </div>
    </div>
-  </Link>
+  </div>
  );
-};
-
-MoviesCart.propTypes = {
- name: PropTypes.string,
- poster: PropTypes.string,
- category: PropTypes.string,
- year: PropTypes.number,
- country: PropTypes.object,
- imdb: PropTypes.string,
- id: PropTypes.number,
- genre: PropTypes.object,
 };
