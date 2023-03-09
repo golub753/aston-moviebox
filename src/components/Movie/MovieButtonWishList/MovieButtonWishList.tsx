@@ -1,13 +1,17 @@
 import { ReactNode } from 'react';
-import { useAppSelector } from '../../../hooks/hooks';
 import s from './MovieButtonWishList.module.scss';
 
 type MovieButtonWishListProps = {
  children: ReactNode;
  props: object;
+ id: string | undefined;
+ click: Function;
 };
 
 export const MovieButtonWishList = (props: MovieButtonWishListProps) => {
- const user = useAppSelector((state) => state.user.user.name);
- return user && <button className={s.button}>{props.children}</button>;
+ return (
+  <button className={s.button} onClick={() => props.click()}>
+   {props.children}
+  </button>
+ );
 };

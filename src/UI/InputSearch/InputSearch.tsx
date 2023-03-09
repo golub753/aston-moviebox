@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import s from './InputSearch.module.scss';
 
 type InputSearch = {
@@ -5,5 +6,11 @@ type InputSearch = {
 };
 
 export const InputSearch = ({ placeholder }: InputSearch) => {
- return <input placeholder={placeholder} className={s.input} />;
+ const [search, setSearch] = useState('');
+
+ const changeInput = (e) => {
+  setSearch(e.target.value);
+ };
+
+ return <input placeholder={placeholder} value={search} className={s.input} onChange={changeInput} />;
 };
