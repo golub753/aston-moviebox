@@ -1,17 +1,15 @@
 import { InputSearch } from '../../index';
-import { Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const HeaderForm = () => {
- const [isSubmit, setIsSubmit] = useState(false);
+ const navigate = useNavigate();
  const submitFormEnter = (e) => {
   e.preventDefault();
-  setIsSubmit(true);
+  navigate('/result');
  };
 
  return (
   <form className="header-form" onSubmit={submitFormEnter}>
-   {isSubmit && <Navigate to="/result" />}
    <InputSearch placeholder="What do you want to watch?" />
   </form>
  );

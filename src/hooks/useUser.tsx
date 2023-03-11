@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch } from './hooks';
-import { setUserFromLocal } from '../store/userSlice';
+import { setUserFromLocal } from '../store/reducers/userSlice';
 
 export function useUser() {
  const dispatch = useAppDispatch();

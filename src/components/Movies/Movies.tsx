@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from 'react';
-import { fetchMovies } from '../../store/moviesSlice';
-import { useDispatch } from 'react-redux';
+import { useContext, useEffect } from 'react';
+// import { fetchMovies } from '../../store/reducers/moviesActionCreators/moviesActionCreators';
+// import { useAppDispatch } from '../../hooks/hooks';
 import { Container } from '../index';
 import { MoviesList } from './MoviesList/MoviesList';
 import s from './Movies.module.scss';
@@ -8,12 +8,12 @@ import { ThemeContext } from '../../App';
 import ErrorBoundary from '../../hoc/ErrorBoundary/ErrorBoundary';
 
 export const Movies = () => {
- const dispatch = useDispatch();
+ //  const dispatch = useAppDispatch();
  const themes = useContext(ThemeContext);
 
- useEffect(() => {
-  dispatch(fetchMovies());
- }, []);
+ //  useEffect(() => {
+ //   dispatch(fetchMovies());
+ //  }, []);
 
  return (
   <div className={s.movies} style={themes}>

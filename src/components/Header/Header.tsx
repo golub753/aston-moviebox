@@ -7,7 +7,7 @@ import s from './Header.module.scss';
 import { useAppSelector } from '../../hooks/hooks';
 
 export const Header = () => {
- const { authorizationPopUp, registrationPopUp } = useAppSelector((state) => state.popUp);
+ const { authorizationPopUp, registrationPopUp } = useAppSelector((state) => state.popUpReducer);
  return (
   <div className={s.header}>
    <Container>

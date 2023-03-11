@@ -5,22 +5,23 @@ type WishlistMoviesProps = {
  movies: Array<object>;
 };
 
-export const WishlistMovies = (movies: any) => {
+export const WishlistMovies = ({ movies }: any) => {
+ const wishlist = Object.entries(movies);
  return (
   <div className={s.wishlist}>
-   {movies &&
-    movies.movies.map((item) => {
+   {wishlist &&
+    wishlist.map((item) => {
      return (
       <WishlistMovie
-       key={item.id}
-       id={item.id}
-       name={item.origin_name}
-       poster={item.poster}
-       category={item.type}
-       year={item.year}
-       country={item.country}
-       imdb={item.imdb}
-       genre={item.genre}
+       key={item[1].id}
+       id={item[1].id}
+       name={item[1].origin_name}
+       poster={item[1].poster}
+       category={item[1].type}
+       year={item[1].year}
+       country={item[1].country}
+       imdb={item[1].imdb}
+       genre={item[1].genre}
       />
      );
     })}
