@@ -20,9 +20,9 @@
 ### Redux
 
 - Используем Modern Redux with Redux Toolkit [store](./src/store/store.tsx)
-- Используем слайсы [moviesSlice](./src/store/moviesSlice.tsx), [popUpSlice](./src/store/popUpSlice.tsx), [userSlice](./src/store/userSlice.tsx)
-- Есть хотя бы одна кастомная мидлвара [logger](./src/middleware/logger.tsx)
-- Используется RTK Query []()
+- Используем слайсы [popUpSlice](./src/store/popUpSlice.tsx), [userSlice](./src/store/userSlice.tsx)
+- Есть хотя бы одна кастомная мидлвара []()
+- Используется RTK Query [MoviesService](./src/services/MoviesService.ts), [UsersService](./src/services/UsersService.ts), [WishlistService](./src/services/WishlistService.ts)
 - Используется Transforming Responses []()
 
 ### 2 уровень (необязательный)

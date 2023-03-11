@@ -16,7 +16,7 @@ export const pushUser = createAsyncThunk(
  async ({ name, mail, password, remember }: { name: string; mail: string; password: string; remember: boolean }) => {
   const response = await fetch('https://aston-moviebox-default-rtdb.firebaseio.com/users.json', {
    method: 'post',
-   body: JSON.stringify({ name: name, mail: mail, password: password, wishlist: '' }),
+   body: JSON.stringify({ name, mail, password, wishlist: '' }),
   });
   const data = await response.json();
   return data;
