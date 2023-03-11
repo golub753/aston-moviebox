@@ -25,10 +25,14 @@ export const MovieMain = ({ img, title, imdb, id }: MovieMainProps) => {
  const [pushMovie, {}] = wishlistAPI.usePushMovieInUserMutation();
 
  const addInWishlist = () => {
-  const movie = movies.results.find((item) => item.id === +id);
-  const wishlistArray = Object.entries(wishlist);
-  const inWishlist = wishlistArray.find((item) => item[1].id === +movie.id);
-  if (!inWishlist) {
+  const movie = movies.find((item) => item.id === +id);
+  if (wishlist) {
+   const wishlistArray = Object.entries(wishlist);
+   const inWishlist = wishlistArray.find((item) => item[1].id === +movie.id);
+   if (!inWishlist) {
+    pushMovie({ token, movie });
+   }
+  } else {
    pushMovie({ token, movie });
   }
  };

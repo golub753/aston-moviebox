@@ -23,7 +23,7 @@
 - Используем слайсы [popUpSlice](./src/store/popUpSlice.tsx), [userSlice](./src/store/userSlice.tsx)
 - Есть хотя бы одна кастомная мидлвара []()
 - Используется RTK Query [MoviesService](./src/services/MoviesService.ts), [UsersService](./src/services/UsersService.ts), [WishlistService](./src/services/WishlistService.ts)
-- Используется Transforming Responses []()
+- Используется Transforming Responses [MoviesService](./src/services/MoviesService.ts)
 
 ### 2 уровень (необязательный)
 
