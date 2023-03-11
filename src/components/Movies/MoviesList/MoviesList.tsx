@@ -1,13 +1,14 @@
 import { MoviesCart } from '../MoviesCart/MoviesCart';
-import { useSelector } from 'react-redux';
 import s from './MoviesList.module.scss';
+import { moviesAPI } from '../../../services/MoviesService';
 
 export const MoviesList = () => {
- const movies = useSelector((state: any) => state.movies);
+ const { data: movies, isLoading, status } = moviesAPI.useFetchAllMoviesQuery('');
  return (
   <div className={s.movies_carts}>
-   {movies.status === 'success' &&
-    movies.movies.map((item: any) => {
+   {isLoading && <div>Loading...</div>}
+   {status === 'fulfilled' &&
+    movies.results.map((item: any) => {
      return (
       <MoviesCart
        key={item.id}

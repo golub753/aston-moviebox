@@ -5,7 +5,7 @@ import { HeaderMenu } from '../HeaderMenu/HeaderMenu';
 import s from './HeaderController.module.scss';
 
 export const HeaderController = () => {
- const user = useAppSelector((state) => state.user.user.name);
+ const user = useAppSelector((state) => state.userReducer.user.name);
  const [visibleMenu, setVisibleMenu] = useState(false);
 
  const toggleVisibleMenu = (e) => {

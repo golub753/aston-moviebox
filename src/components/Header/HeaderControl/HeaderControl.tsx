@@ -1,6 +1,6 @@
 import s from './HeaderControl.module.scss';
 import { useAppDispatch } from '../../../hooks/hooks';
-import { toggleAuthorization, toggleRegistration } from '../../../store/popUpSlice';
+import { toggleAuthorization, toggleRegistration } from '../../../store/reducers/popUpSlice';
 import PropTypes from 'prop-types';
 
 type HeaderControl = {

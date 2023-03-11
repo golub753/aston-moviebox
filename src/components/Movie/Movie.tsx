@@ -1,11 +1,12 @@
 import { Header } from '../index';
 import { useParams } from 'react-router-dom';
-import { useAppSelector } from '../../hooks/hooks';
 import { MovieMain } from './MovieMain/MovieMain';
+import { moviesAPI } from '../../services/MoviesService';
 
 export const Movie = () => {
+ const { data: movies } = moviesAPI.useFetchAllMoviesQuery('');
  const { id } = useParams();
- const movie = useAppSelector((state) => state.movies.movies.find((element) => element.id === +id));
+ const movie = movies.results.find((element) => element.id === +id);
  return (
   <div>
    <Header />

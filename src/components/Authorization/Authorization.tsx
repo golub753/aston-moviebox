@@ -1,8 +1,8 @@
 import { useAppDispatch } from '../../hooks/hooks';
 import { useState } from 'react';
 import s from './Authorization.module.scss';
-import { toggleAuthorization } from '../../store/popUpSlice';
-import { getUser } from '../../store/userSlice';
+import { toggleAuthorization } from '../../store/reducers/popUpSlice';
+import { getUser } from '../../store/reducers/userActionCreators/userActionCreators';
 
 import showImg from '../../assets/show.svg';
 import hide from '../../assets/hide.svg';

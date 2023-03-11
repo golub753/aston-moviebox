@@ -1,6 +1,6 @@
 import s from './HeaderMenu.module.scss';
 import { Link } from 'react-router-dom';
-import { removeUser } from '../../../store/userSlice';
+import { removeUser } from '../../../store/reducers/userSlice';
 import { useAppDispatch } from '../../../hooks/hooks';
 
 type HeaderMenuProps = {

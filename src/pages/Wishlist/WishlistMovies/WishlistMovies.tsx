@@ -5,11 +5,12 @@ type WishlistMoviesProps = {
  movies: Array<object>;
 };
 
-export const WishlistMovies = (movies: any) => {
+export const WishlistMovies = ({ movies }: any) => {
+ const wishlist = Object.entries(movies).reduce((array, item) => array.concat(item[1]), []);
  return (
   <div className={s.wishlist}>
-   {movies &&
-    movies.movies.map((item) => {
+   {wishlist &&
+    wishlist.map((item) => {
      return (
       <WishlistMovie
        key={item.id}

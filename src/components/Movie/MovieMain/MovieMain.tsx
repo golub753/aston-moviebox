@@ -1,11 +1,11 @@
 import { Container } from '../../index';
 import s from './MovieMain.module.scss';
-import { useEffect, useState } from 'react';
 import { MovieButtonWishList } from '../MovieButtonWishList/MovieButtonWishList';
-import { useAppSelector, useAppDispatch } from '../../../hooks/hooks';
-import { pushMovie } from '../../../store/wishlistSlice';
-import { pushMovieInUser } from '../../../store/userSlice';
+import { useAppSelector } from '../../../hooks/hooks';
 import { getTokenUser } from '../../../helpers/getTokenUser';
+import { moviesAPI } from '../../../services/MoviesService';
+import { usersAPI } from '../../../services/UsersService';
+import { wishlistAPI } from '../../../services/WishlistService';
 
 import imdbImage from '../../../assets/imdb.svg';
 
@@ -17,26 +17,19 @@ type MovieMainProps = {
 };
 
 export const MovieMain = ({ img, title, imdb, id }: MovieMainProps) => {
- const [dataUsers, setDataUsers] = useState([]);
- const user = useAppSelector((state) => state.user.user);
- const movies = useAppSelector((state) => state.movies.movies);
- const wishlist = useAppSelector((state) => state.wishlist.wishlist);
- const dispatch = useAppDispatch();
-
- useEffect(() => {
-  fetch('https://aston-moviebox-default-rtdb.firebaseio.com/users.json')
-   .then((response) => response.json())
-   .then((json) => setDataUsers(json));
- }, []);
+ const { data: users, isLoading } = usersAPI.useGetAllUsersQuery('');
+ const { data: movies } = moviesAPI.useFetchAllMoviesQuery('');
+ const user = useAppSelector((state) => state.userReducer.user);
+ const token = user.name ? (isLoading ? false : getTokenUser(users, user.mail)) : false;
+ const { data: wishlist } = wishlistAPI.useGetWishlistQuery(token);
+ const [pushMovie, {}] = wishlistAPI.usePushMovieInUserMutation();
 
  const addInWishlist = () => {
-  const movie = movies.find((item) => item.id === +id);
-  const moviesArray = [...wishlist, movie];
-  const inWishlist = wishlist.find((item) => item.id === +movie.id);
+  const movie = movies.results.find((item) => item.id === +id);
+  const wishlistArray = Object.entries(wishlist);
+  const inWishlist = wishlistArray.find((item) => item[1].id === +movie.id);
   if (!inWishlist) {
-   const token = getTokenUser(dataUsers, user.mail);
-   dispatch(pushMovie(movie));
-   dispatch(pushMovieInUser({ token, moviesArray }));
+   pushMovie({ token, movie });
   }
  };
  return (

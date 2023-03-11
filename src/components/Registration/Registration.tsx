@@ -1,9 +1,8 @@
 import { useAppDispatch } from '../../hooks/hooks';
-import { useEffect, useState } from 'react';
-import { toggleRegistration } from '../../store/popUpSlice';
-import { pushUser } from '../../store/userSlice';
-import { getUser } from '../../store/userSlice';
-import { authorizationWithourRemember } from '../../store/userSlice';
+import { useState } from 'react';
+import { toggleRegistration } from '../../store/reducers/popUpSlice';
+import { authorizationWithourRemember } from '../../store/reducers/userSlice';
+import { pushUser, getUser } from '../../store/reducers/userActionCreators/userActionCreators';
 
 import s from './Registration.module.scss';
 
