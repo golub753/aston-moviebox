@@ -25,7 +25,6 @@ export const userSlice = createSlice({
    state.status = 'loading';
   });
   builder.addCase(getUser.fulfilled, (state, action) => {
-   console.log(action);
    state.user = action.payload;
    state.status = 'success';
   });

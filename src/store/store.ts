@@ -4,7 +4,7 @@ import userReducer from './reducers/userSlice';
 import { moviesAPI } from '../services/MoviesService';
 import { wishlistAPI } from '../services/WishlistService';
 import { usersAPI } from '../services/UsersService';
-import { localStorageMiddleware } from '../middleware/localStorageMiddleware';
+import { userMiddleware } from '../middleware/userMiddleware';
 
 const rootReducers = combineReducers({
  popUpReducer,
@@ -21,7 +21,7 @@ export const store = configureStore({
    .concat(moviesAPI.middleware)
    .concat(wishlistAPI.middleware)
    .concat(usersAPI.middleware)
-   .concat(localStorageMiddleware),
+   .concat(userMiddleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

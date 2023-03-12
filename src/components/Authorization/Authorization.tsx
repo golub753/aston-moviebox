@@ -12,7 +12,7 @@ import close from '../../assets/close.svg';
 interface FormState {
  mail: string;
  password: string;
- remember: boolean;
+ isRemember: boolean;
 }
 
 export const Authorization = () => {
@@ -20,10 +20,10 @@ export const Authorization = () => {
  const [formState, setFormState] = useState<FormState>({
   mail: '',
   password: '',
-  remember: false,
+  isRemember: false,
  });
 
- const { mail, password, remember } = formState;
+ const { mail, password, isRemember } = formState;
 
  const [show, setShow] = useState(false);
 
@@ -31,7 +31,7 @@ export const Authorization = () => {
 
  const submitForm = (e) => {
   e.preventDefault();
-  dispatch(getUser({ mail, password, remember, users }));
+  dispatch(getUser({ mail, password, isRemember, users }));
   toggleAuth();
   e.target.reset();
  };
@@ -58,7 +58,7 @@ export const Authorization = () => {
 
  const changeRemember = () => {
   setFormState((prev) => {
-   return { ...prev, remember: !remember };
+   return { ...prev, isRemember: !isRemember };
   });
  };
 
@@ -106,7 +106,7 @@ export const Authorization = () => {
       <div className={s.authorization_remember}>
        <input
         type="checkbox"
-        checked={remember}
+        checked={isRemember}
         onChange={changeRemember}
         name="remember"
         id="remember"

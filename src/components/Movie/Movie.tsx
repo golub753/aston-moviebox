@@ -4,9 +4,9 @@ import { MovieMain } from './MovieMain/MovieMain';
 import { moviesAPI } from '../../services/MoviesService';
 
 export const Movie = () => {
- const { data: movies, isLoading } = moviesAPI.useFetchAllMoviesQuery('');
+ let { data: movie = [], isLoading } = moviesAPI.useFetchAllMoviesQuery('');
  const { id } = useParams();
- const movie = isLoading ? false : movies.find((element) => element.id === +id);
+ movie = movie.find((element) => element.id === +id);
  return (
   <>
    {isLoading ? (
