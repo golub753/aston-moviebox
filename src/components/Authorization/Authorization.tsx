@@ -3,6 +3,7 @@ import { useState } from 'react';
 import s from './Authorization.module.scss';
 import { toggleAuthorization } from '../../store/reducers/popUpSlice';
 import { getUser } from '../../store/reducers/userActionCreators/userActionCreators';
+import { usersAPI } from '../../services/UsersService';
 
 import showImg from '../../assets/show.svg';
 import hide from '../../assets/hide.svg';
@@ -15,6 +16,7 @@ interface FormState {
 }
 
 export const Authorization = () => {
+ const { data: users } = usersAPI.useGetAllUsersQuery('');
  const [formState, setFormState] = useState<FormState>({
   mail: '',
   password: '',
@@ -29,7 +31,7 @@ export const Authorization = () => {
 
  const submitForm = (e) => {
   e.preventDefault();
-  dispatch(getUser({ mail, password, remember }));
+  dispatch(getUser({ mail, password, remember, users }));
   toggleAuth();
   e.target.reset();
  };
