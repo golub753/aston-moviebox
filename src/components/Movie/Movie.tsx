@@ -6,7 +6,7 @@ import { moviesAPI } from '../../services/MoviesService';
 export const Movie = () => {
  const { data: movies } = moviesAPI.useFetchAllMoviesQuery('');
  const { id } = useParams();
- const movie = movies.results.find((element) => element.id === +id);
+ const movie = movies.find((element) => element.id === +id);
  return (
   <div>
    <Header />

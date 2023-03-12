@@ -10,6 +10,11 @@ export const moviesAPI = createApi({
    query: () => ({
     url: 'page-6.json',
    }),
+   transformResponse: (response) => {
+    return response.results.map((movie) =>
+     movie.year >= 2022 ? { ...movie, latest: true } : { ...movie, latest: false }
+    );
+   },
   }),
  }),
 });

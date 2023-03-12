@@ -8,7 +8,7 @@ export const MoviesList = () => {
   <div className={s.movies_carts}>
    {isLoading && <div>Loading...</div>}
    {status === 'fulfilled' &&
-    movies.results.map((item: any) => {
+    movies.map((item: any) => {
      return (
       <MoviesCart
        key={item.id}
@@ -20,6 +20,7 @@ export const MoviesList = () => {
        country={item.country}
        imdb={item.imdb}
        genre={item.genre}
+       latest={item.latest}
       />
      );
     })}

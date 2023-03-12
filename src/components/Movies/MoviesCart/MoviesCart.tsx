@@ -1,7 +1,9 @@
 import s from './MoviesCart.module.scss';
-import imdbImage from '../../../assets/imdb.svg';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+import imdbImage from '../../../assets/imdb.svg';
+import latestImg from '../../../assets/new.png';
 
 export type MoviesCartType = {
  name: string;
@@ -12,15 +14,17 @@ export type MoviesCartType = {
  imdb: string;
  id: number;
  genre: Array<string>;
+ latest: boolean;
 };
 
-export const MoviesCart = ({ name, poster, category, year, country, imdb, genre, id }: MoviesCartType) => {
+export const MoviesCart = ({ name, poster, category, year, country, imdb, genre, id, latest }: MoviesCartType) => {
  return (
   <Link to={`/${id}`} className={s.movies_cart}>
    <div>
     <div className={s.movies_poster}>
      <img src={poster} alt={poster} className={s.movies_cart_img} />
      <span className={s.movies_cart_category}>{category}</span>
+     {latest && <img className={s.movies_cart_new} src={latestImg} alt={latestImg} />}
     </div>
     <div>
      <div className={s.movies_cart_info}>
