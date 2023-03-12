@@ -3,6 +3,7 @@ import { useState } from 'react';
 import s from './Authorization.module.scss';
 import { toggleAuthorization } from '../../store/reducers/popUpSlice';
 import { getUser } from '../../store/reducers/userActionCreators/userActionCreators';
+import { usersAPI } from '../../services/UsersService';
 
 import showImg from '../../assets/show.svg';
 import hide from '../../assets/hide.svg';
@@ -11,17 +12,18 @@ import close from '../../assets/close.svg';
 interface FormState {
  mail: string;
  password: string;
- remember: boolean;
+ isRemember: boolean;
 }
 
 export const Authorization = () => {
+ const { data: users } = usersAPI.useGetAllUsersQuery('');
  const [formState, setFormState] = useState<FormState>({
   mail: '',
   password: '',
-  remember: false,
+  isRemember: false,
  });
 
- const { mail, password, remember } = formState;
+ const { mail, password, isRemember } = formState;
 
  const [show, setShow] = useState(false);
 
@@ -29,7 +31,7 @@ export const Authorization = () => {
 
  const submitForm = (e) => {
   e.preventDefault();
-  dispatch(getUser({ mail, password, remember }));
+  dispatch(getUser({ mail, password, isRemember, users }));
   toggleAuth();
   e.target.reset();
  };
@@ -56,7 +58,7 @@ export const Authorization = () => {
 
  const changeRemember = () => {
   setFormState((prev) => {
-   return { ...prev, remember: !remember };
+   return { ...prev, isRemember: !isRemember };
   });
  };
 
@@ -104,7 +106,7 @@ export const Authorization = () => {
       <div className={s.authorization_remember}>
        <input
         type="checkbox"
-        checked={remember}
+        checked={isRemember}
         onChange={changeRemember}
         name="remember"
         id="remember"

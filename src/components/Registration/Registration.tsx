@@ -18,7 +18,7 @@ interface FormState {
  mail: FormStatePros;
  password: FormStatePros;
  passwordConfirm: FormStatePros;
- remember: boolean;
+ isRemember: boolean;
  errorForm: boolean;
 }
 
@@ -50,11 +50,11 @@ export const Registration = () => {
    error: false,
    errorMessage: '',
   },
-  remember: false,
+  isRemember: false,
   errorForm: true,
  });
 
- const { name, mail, password, passwordConfirm, remember, errorForm } = formState;
+ const { name, mail, password, passwordConfirm, isRemember, errorForm } = formState;
  const [showPass, setShowPass] = useState(false);
 
  const dispatch = useAppDispatch();
@@ -79,11 +79,11 @@ export const Registration = () => {
      name: name.value,
      mail: mail.value,
      password: password.value,
-     remember: remember,
+     isRemember: isRemember,
     })
    );
-   if (remember) {
-    dispatch(getUser({ mail: mail.value, password: password.value, remember: remember }));
+   if (isRemember) {
+    dispatch(getUser({ mail: mail.value, password: password.value, isRemember: isRemember }));
    } else {
     dispatch(
      authorizationWithourRemember({
@@ -194,7 +194,7 @@ export const Registration = () => {
 
  const changeRemember = () => {
   setFormState((prev) => {
-   return { ...prev, remember: !remember };
+   return { ...prev, isRemember: !isRemember };
   });
  };
 
@@ -282,7 +282,7 @@ export const Registration = () => {
         type="checkbox"
         name="remember"
         id="remember_reg"
-        checked={remember}
+        checked={isRemember}
         onChange={changeRemember}
         className={s.registration_check}
        />

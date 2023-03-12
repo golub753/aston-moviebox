@@ -21,7 +21,7 @@
 
 - Используем Modern Redux with Redux Toolkit [store](./src/store/store.tsx)
 - Используем слайсы [popUpSlice](./src/store/popUpSlice.tsx), [userSlice](./src/store/userSlice.tsx)
-- Есть хотя бы одна кастомная мидлвара []()
+- Есть хотя бы одна кастомная мидлвара [localStorageMiddleware](./src/middleware/localStorageMiddleware.ts)
 - Используется RTK Query [MoviesService](./src/services/MoviesService.ts), [UsersService](./src/services/UsersService.ts), [WishlistService](./src/services/WishlistService.ts)
 - Используется Transforming Responses [MoviesService](./src/services/MoviesService.ts)
 
