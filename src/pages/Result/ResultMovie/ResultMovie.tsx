@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import s from './ResultMovie.module.scss';
 
 export const ResultMovie = ({ name, poster, category, year, country, imdb, genre, id }: MoviesCartType) => {
+ const countryArray = Array.isArray(country) ? country.filter((item) => item) : Object.values(country);
  return (
   <Link to={`/${id}`} className={s.result_cart}>
    <div>
@@ -13,7 +14,11 @@ export const ResultMovie = ({ name, poster, category, year, country, imdb, genre
     </div>
     <div>
      <div className={s.result_cart_info}>
-      <span className={s.result_cart_span}>{country[Object.keys(country)[0]]} </span>
+      <span className={s.result_cart_span}>
+       {countryArray.map((item, index) => (
+        <span key={index}>{item}</span>
+       ))}
+      </span>
       <span className={s.result_cart_span}>{year}</span>
      </div>
      <div className={s.result_cart_name}>{name}</div>

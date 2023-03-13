@@ -8,21 +8,21 @@
 
 - Функциональные компоненты с хуками в приоритете над классовыми
 - Есть четкое разделение на умные и глупые компоненты
-- Есть рендеринг списков [MoviesList](./src/components/Movies/MoviesList/MoviesList.tsx), [MainSlider](./src/components/Main/MainSlider/MainSlider.tsx), [WishlistMovies](./src/pages/Wishlist/WishlistMovies/WishlistMovies.tsx)
-- Реализована хотя бы одна форма [Authorization](./src/components/Authorization/Authorization.tsx), [Registration](./src/components/Registration/Registration.tsx)
+- Есть рендеринг списков [MoviesList](./src/components/Movies/MoviesList/MoviesList.tsx), [MainSlider](./src/components/Main/MainSlider/MainSlider.tsx), [WishlistMovies](./src/pages/Wishlist/WishlistMovies/WishlistMovies.tsx), [ResultMovies](./src/pages/Result/ResultMovies/ResultMovies.tsx)
+- Реализована хотя бы одна форма [Authorization](./src/components/Authorization/Authorization.tsx), [Registration](./src/components/Registration/Registration.tsx), [HeaderForm](./src/components/Header/HeaderForm/HeaderForm.tsx)
 - Есть применение Context API [App](./src/App.tsx), [Movies](./src/components/Movies/Movies.tsx)
 - Есть применение предохранителя [ErrorBoundary](./src/hoc/ErrorBoundary/ErrorBoundary.tsx)
 - Есть хотя бы один кастомный хук [useUser](./src/hooks/useUser.tsx)
 - Хотя бы несколько компонентов используют PropTypes [MoviesCart](./src/components/Movies/MoviesCart/MoviesCart.tsx), [HeaderControl](./src/components/Header/HeaderControl/HeaderControl.tsx)
-- Поиск не должен триггерить много запросов к серверу
 - Есть применение lazy + Suspense [App](./src/App.tsx)
+- Поиск не должен триггерить много запросов к серверу
 
 ### Redux
 
 - Используем Modern Redux with Redux Toolkit [store](./src/store/store.tsx)
-- Используем слайсы [popUpSlice](./src/store/popUpSlice.tsx), [userSlice](./src/store/userSlice.tsx)
+- Используем слайсы [popUpSlice](./src/store/popUpSlice.tsx), [userSlice](./src/store/userSlice.tsx), [searchSlice](./src/store/reducers/searchSlice.ts)
 - Есть хотя бы одна кастомная мидлвара [localStorageMiddleware](./src/middleware/localStorageMiddleware.ts)
-- Используется RTK Query [MoviesService](./src/services/MoviesService.ts), [UsersService](./src/services/UsersService.ts), [WishlistService](./src/services/WishlistService.ts)
+- Используется RTK Query [MoviesService](./src/services/MoviesService.ts), [UsersService](./src/services/UsersService.ts), [WishlistService](./src/services/WishlistService.ts), [SearchService](./src/services/SearchService.ts)
 - Используется Transforming Responses [MoviesService](./src/services/MoviesService.ts)
 
 ### 2 уровень (необязательный)

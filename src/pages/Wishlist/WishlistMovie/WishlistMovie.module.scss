@@ -1,13 +1,24 @@
+.movie {
+ position: relative;
+}
 .movies {
  &_poster {
   position: relative;
   margin-bottom: 12px;
  }
+ &_delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 1;
+  width: 30px;
+  background: #fff;
+ }
  &_cart {
   text-decoration: none;
   width: 100%;
   height: fit-content;
-  overflow: hidden;
+  position: relative;
   &_img {
    width: 100%;
    height: 370px;
@@ -35,6 +46,9 @@
    font-size: 12px;
    line-height: 16px;
    color: #9ca3af;
+   display: inline-flex;
+   grid-column-gap: 5px;
+   margin-right: 5px;
   }
   &_name {
    font-weight: 700;

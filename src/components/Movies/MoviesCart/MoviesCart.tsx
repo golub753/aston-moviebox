@@ -18,6 +18,7 @@ export type MoviesCartType = {
 };
 
 export const MoviesCart = ({ name, poster, category, year, country, imdb, genre, id, latest }: MoviesCartType) => {
+ const countryArray = Array.isArray(country) ? country.filter((item) => item) : Object.values(country);
  return (
   <Link to={`/${id}`} className={s.movies_cart}>
    <div>
@@ -28,7 +29,11 @@ export const MoviesCart = ({ name, poster, category, year, country, imdb, genre,
     </div>
     <div>
      <div className={s.movies_cart_info}>
-      <span className={s.movies_cart_span}>{country[Object.keys(country)[0]]} </span>
+      <span className={s.movies_cart_span}>
+       {countryArray.map((item, index) => (
+        <span key={index}>{item}</span>
+       ))}
+      </span>
       <span className={s.movies_cart_span}>{year}</span>
      </div>
      <div className={s.movies_cart_name}>{name}</div>

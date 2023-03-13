@@ -1,18 +1,32 @@
 import { MoviesCartType } from '../../../components/Movies/MoviesCart/MoviesCart';
+import { Link } from 'react-router-dom';
 import imdbImage from '../../../assets/imdb.svg';
+import cross from '../../../assets/cross.svg';
 import s from './WishlistMovie.module.scss';
 
 export const WishlistMovie = ({ name, poster, category, year, country, imdb, genre, id }: MoviesCartType) => {
+ const countryArray = Array.isArray(country) ? country.filter((item) => item) : Object.values(country);
+ const deleteItem = (e) => {
+  const target = document.querySelector('img[src="/src/assets/cross.svg"]');
+  if (e.target === target) {
+   e.preventDefault();
+  }
+ };
  return (
-  <div className={s.movies_cart}>
-   <div>
+  <div className={s.movie}>
+   <Link to={`/${id}`} className={s.movies_cart} onClick={deleteItem}>
+    <img src={cross} alt={cross} className={s.movies_delete} />
     <div className={s.movies_poster}>
      <img src={poster} alt={poster} className={s.movies_cart_img} />
      <span className={s.movies_cart_category}>{category}</span>
     </div>
     <div>
      <div className={s.movies_cart_info}>
-      <span className={s.movies_cart_span}>{country[Object.keys(country)[0]]} </span>
+      <span className={s.movies_cart_span}>
+       {countryArray.map((item, index) => (
+        <span key={index}>{item}</span>
+       ))}
+      </span>
       <span className={s.movies_cart_span}>{year}</span>
      </div>
      <div className={s.movies_cart_name}>{name}</div>
@@ -32,7 +46,7 @@ export const WishlistMovie = ({ name, poster, category, year, country, imdb, gen
        : null}
      </div>
     </div>
-   </div>
+   </Link>
   </div>
  );
 };

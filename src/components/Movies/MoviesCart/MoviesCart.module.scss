@@ -34,6 +34,9 @@
    font-size: 12px;
    line-height: 16px;
    color: #9ca3af;
+   display: inline-flex;
+   grid-column-gap: 5px;
+   margin-right: 5px;
   }
   &_name {
    font-weight: 700;
