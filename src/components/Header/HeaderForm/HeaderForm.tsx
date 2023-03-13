@@ -2,17 +2,23 @@ import s from './HeaderForm.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { searchAPI } from '../../../services/SearchService';
 import { Link } from 'react-router-dom';
-import throttle from 'lodash.throttle';
 import { useAppDispatch } from '../../../hooks/hooks';
 import { setSearchMovies } from '../../../store/reducers/searchSlice';
 
 import imdbImage from '../../../assets/imdb.svg';
-import { useEffect, useState } from 'react';
+
+type ItemType = {
+ id: number;
+ poster: string;
+ origin_name: string;
+ genre: object;
+ imdb?: undefined | number;
+};
 
 export const HeaderForm = () => {
  const dispatch = useAppDispatch();
  const navigate = useNavigate();
- const [submitSearch, { data: movies, isSuccess, error }] = searchAPI.useLazySearchMoviesQuery();
+ const [submitSearch, { data: movies, isSuccess }] = searchAPI.useLazySearchMoviesQuery();
 
  const submitForm = async (e) => {
   e.preventDefault();
@@ -33,7 +39,7 @@ export const HeaderForm = () => {
    </form>
    {isSuccess && movies.length >= 1 && (
     <ul className={s.ul}>
-     {movies.map((item) => {
+     {movies.map((item: ItemType) => {
       return (
        <li className={s.li} key={item.id}>
         <Link to={`/${item.id}`} className={s.li_link}>

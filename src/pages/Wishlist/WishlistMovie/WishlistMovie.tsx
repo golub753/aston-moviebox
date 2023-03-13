@@ -6,12 +6,14 @@ import s from './WishlistMovie.module.scss';
 
 export const WishlistMovie = ({ name, poster, category, year, country, imdb, genre, id }: MoviesCartType) => {
  const countryArray = Array.isArray(country) ? country.filter((item) => item) : Object.values(country);
+
  const deleteItem = (e) => {
-  const target = document.querySelector('img[src="/src/assets/cross.svg"]');
-  if (e.target === target) {
+  const target = e.target.getAttribute('src');
+  if (target === '/src/assets/cross.svg') {
    e.preventDefault();
   }
  };
+
  return (
   <div className={s.movie}>
    <Link to={`/${id}`} className={s.movies_cart} onClick={deleteItem}>

@@ -3,7 +3,7 @@ import s from './MovieButtonWishList.module.scss';
 
 type MovieButtonWishListProps = {
  children: ReactNode;
- props: object;
+ props?: object;
  id: string | undefined;
  click: Function;
 };

@@ -9,7 +9,7 @@ export const ResultMovies = ({ movies }: ResultMoviesProps) => {
  return (
   <div className={s.results}>
    {movies &&
-    movies.map((item) => {
+    movies.map((item: any) => {
      return (
       <ResultMovie
        key={item.id}

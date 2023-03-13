@@ -8,7 +8,7 @@ export const MoviesList = () => {
   <div className={s.movies_carts}>
    {isLoading && <div>Loading...</div>}
    {status === 'fulfilled' &&
-    movies.map((item: any) => {
+    movies.map((item) => {
      return (
       <MoviesCart
        key={item.id}
